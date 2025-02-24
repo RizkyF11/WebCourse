@@ -8,15 +8,15 @@ const NavbarComponent = () => {
     
     const changeBackgroundColor = () => {
         if (window.scrollY > 10) {
-            setChangeColor(true)
+            setChangeColor(true);
         }else {
-            setChangeColor(false)
+            setChangeColor(false);
         }
     }
 
     useEffect(() => {
         changeBackgroundColor();
-        window.addEventListener('scroll', changeBackgroundColor)
+        window.addEventListener('scroll', changeBackgroundColor);
     });
 
     return (

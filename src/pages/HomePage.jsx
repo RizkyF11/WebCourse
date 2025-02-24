@@ -1,7 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
 import HeroImage from "../assets/img/hero.png";
-import { kelasTerbaru } from "../data/index";
+
+import { kelasTerbaru, dataSwiper } from "../data/index";
 import { Navigate } from "react-router";
+import FaqComponent from "../components/FaqComponent";
 
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
@@ -63,7 +65,7 @@ const HomePage = () => {
           <Row>
             {kelasTerbaru.map((kelas) => {
               return (
-                <Col key={kelas.id}>
+                <Col key={kelas.id} className="shadow rounded">
                   <img
                     src={kelas.image}
                     alt="unsplash.com"
@@ -117,34 +119,49 @@ const HomePage = () => {
               }}
               breakpoints={{
                 640: {
-                  slidesPerView: 2,
+                  slidesPerView: 1,
                   spaceBetween: 20,
                 },
                 768: {
-                  slidesPerView: 4,
+                  slidesPerView: 2,
                   spaceBetween: 40,
                 },
-                1024: {
-                  slidesPerView: 5,
+                992: {
+                  slidesPerView: 2,
                   spaceBetween: 50,
                 },
+                1200: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+
               }}
               modules={[Pagination]}
               className="mySwiper"
             >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-              <SwiperSlide>Slide 5</SwiperSlide>
-              <SwiperSlide>Slide 6</SwiperSlide>
-              <SwiperSlide>Slide 7</SwiperSlide>
-              <SwiperSlide>Slide 8</SwiperSlide>
-              <SwiperSlide>Slide 9</SwiperSlide>
+             {dataSwiper.map(data => {
+              return (
+                
+                <SwiperSlide key={data.id} className="shadow-sm">
+                  <p className="desc">{data.desc}</p>
+                  <div className="people">
+                    <img src= {data.image} alt="" />
+                    <div>
+                      <h5 className="mb-1">{data.name}</h5>
+                      <p className="m-0 fw-bold">{data.skill}</p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              )
+             })};
             </Swiper>
           </Row>
         </Container>
       </div>
+
+      {/* Section FAQ */}
+      <FaqComponent/>
+      {/* Section FAQ */}
     </div>
   );
 };
