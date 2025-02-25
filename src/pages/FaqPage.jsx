@@ -1,9 +1,11 @@
-import React from 'react'
+import FaqComponent from "../components/FaqComponent";
 
 const FaqPage = () => {
   return (
-    <div>FaqPage</div>
-  )
-}
+    <div className="pt-5">
+      <FaqComponent />
+    </div>
+  );
+};
 
-export default FaqPage
+export default FaqPage;
